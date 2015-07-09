@@ -181,8 +181,15 @@ $_GET[''];
 
 /*--------------------------SQLをPHPで操作する・終--------------------------*/
 
-/*--------------------------クラス・終--------------------------*/
-//クラスを作る//
+/*--------------------------クラス・始--------------------------*/
+//基本的な使い方
+	①クラスを呼ぶ
+		require_once("クラスを記述したファイル");
+	②クラスをインスタンスする
+		$db = new DB();
+	③クラスに入っている関数を呼ぶ
+		$db -> InsertGoods();
+//クラスを作る
 class DB{
 	private $USER = "i510" ;
 	private $PW   = "May.2015";
@@ -220,6 +227,33 @@ class DB{
 	$db = new DB();
 	$sql = "SELECT * FROM goods";
 	$res = $db -> executesql($sql , null);
+
+//クラスを派生する
+	require_once("親クラスファイル");
+	class DBGoods extends DB{
+	public function InsertGoods(){
+		$sql  = "INSERT INTO goods VALUES(? , ? , ?)";
+		$array = array($_POST['GoodsID'] , $_POST['GoodsName'] , $_POST['Price']);
+		parent::executeSQL($sql , $array);
+	}
+	public function SelectGoodsAll(){
+		$sql = "SELECT * FROM goods";
+		$res = parent::executeSQL($sql , null);
+		$records = "<table border = 1>\n";
+		while($row = $res -> fetch(PDO::FETCH_ASSOC)){
+			$records .= "<tr><td>{$row['GoodsID']}</td>";
+			$records .= "<td>{$row['GoodsName']}</td>";
+			$records .= "<td>{$row['Price']}</td></tr>\n";
+		}
+		$records .= "</table>\n";
+		return $records;
+	}
+
+}
+
+//親クラスの関数を子クラスで使う
+	parent::関数名;
+
 
 /*--------------------------クラス・終--------------------------*/
 ?>
