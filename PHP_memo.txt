@@ -186,7 +186,7 @@ $_GET[''];
 class DB{
 	private $USER = "i510" ;
 	private $PW   = "May.2015";
-	private $dns  = "mysql:dbname=i510;host=sv1;charset=utf8";
+	private $dns  = "mysql:dbname="データベース名";host="ホスト名";charset=utf8";
 
 	
 	private function Connectdb(){
