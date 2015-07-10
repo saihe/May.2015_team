@@ -154,7 +154,7 @@ $_GET[''];
 	<input type = "submit" name = "insert" value = " 登録 ">
 
 //プルダウン選択
-//ドリームウィーバーでエラーが出るのは不明です。これそのままでカエル教科書5-3は正常動作しました。
+//エラーが出るかもしれない。
 	$sql = "SELECT GoodsID , GoodsName FROM goods";
 	$stmt = $pdo -> prepare($sql);
 	$stmt -> execute(null);
