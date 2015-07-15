@@ -47,20 +47,62 @@ namespace C#memo
 		//書式
 			//左詰め{0 , 有効桁数(小数点含む)} 4ならば0.01が四桁 5にすると 0.01と左に空白を半角1文字分追加する
 				string.Format("{0 , 4}" , 文字列とか表示内容);
+		
+		//連想配列
+			//Hashtable(ハッシュテーブル)
+				using.System.Collotion;
+				Hashtable 配列名 = new Hashtable();
+				
+				ht["key"] = value;
+				
+				foreach(var key in ht.Keys)
+				{
+					Console.WriteLine("{0} {1}" , key , ht[key]);
+					Console.WriteLine{key ht:key]);
+				}
+			//Dictionary
+				Dictionary<keyの型 , valueの型> 配列名 = new Dictinary<keyの型 , valueの型>();
+				dic["key"] = value;
+			
+		//多次元配列(配列の中では型は一つしか指定できない)
+			型[,] 配列名 = new 型[次元数 , 配列数];
+			配列名[次元番号 , 配列番号] = 要素;
+			
+		//ジャグ配列(JAG)(配列の中では型は一つしか指定できない)
+			型[] 配列名 = new 型[次元数][];
+			配列名[次元数] = new 型[]{要素};
+			
+		//配列取り出し
+			foreach(var 変数名 in 配列名)
+			{
+				Console.WriteLine(変数名);
+			}
+		
+		//配列の要素数
+			配列名.Lengh;
+		
+		//多次元配列の次元数
+			配列名.Rank;
+		
+		//多次元配列の次元ごとの要素数
+			配列名.GetLength(次元数);
+
+
+		
+		
+		
+		
 
 
 		/*--------------------------変数、配列・終--------------------------*/
 
 		/*--------------------------メモ・始--------------------------*/
-		//文字列連結(+をつかう)
+		//文字連結(+をつかう)
 			変数名 + "文字列";
 
 		//変数の語尾に文字を追記する
 			m  = "あ";
 			m += "い";//変数mには"あい"が入っている
-
-		//配列の要素数
-			配列名.lengh;
 
 		//foreachはitemに配列の要素が代入される
 			foreach(var item in 配列名){}
