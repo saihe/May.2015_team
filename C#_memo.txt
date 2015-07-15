@@ -63,6 +63,9 @@ namespace C#memo
 			//Dictionary
 				Dictionary<keyの型 , valueの型> 配列名 = new Dictinary<keyの型 , valueの型>();
 				dic["key"] = value;
+				
+		//Dictionaryのキー・要素のペア数取得
+			dictionary名.Count;
 			
 		//多次元配列(配列の中では型は一つしか指定できない)
 			型[,] 配列名 = new 型[次元数 , 配列数];
