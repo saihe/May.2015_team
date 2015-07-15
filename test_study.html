@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset ="UTF-8">
+	<title>きょんたろぐ</title>
+	<style>
+		
+		body{
+			weidth:1000px;
+			background-color:#FFEEEE;
+		}
+		
+		h1{
+			text-align:center;
+		}
+		
+		container{
+			margin:auto 100px auto 100px;
+		}
+		
+		table{
+			margin:auto;
+		}
+		
+		dl{
+			
+		}
+		
+		h2{
+			margin:5em auto 0 auto;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>情報処理にて先生に重要だと言われた項目リスト</h1>
+	</header>
+
+	<container>
+		<h2>【配列】</h2>
+			<dl>
+				<dt>・Queue(キュー)</dt>
+					<dd>先に入ったものが先に出でる配列方法。(FIFO : First-In First-Out)</dd>
+				<dt>・enqueue(エンキュー)</dt>
+					<dd>データをキューに格納。</dd>
+				<dt>・dequeue(デキュー)</dt>
+					<dd>データをキューから取り出す。</dd>
+				<dt>・Stack(スタック)</dt>
+					<dd>後に入ったものが先に出る配列方法。(LIFO : Last-In First-Out)</dd>
+				<dt>・push(プッシュ)</dt>
+					<dd>データをスタックに格納。</dd>
+				<dt>・pop(ポップ)</dt>
+					<dd>データをスタックから取り出す。</dd>
+			</dl>
+
+		<h2>【JISコード】</h2>
+			<p>2進数で表される。</p>
+			<p>全角文字は2バイト。</p>
+			<table border = 1>
+				<tr>
+					<td colspan = 4 rowspan = 4></td>
+					<th></th>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<th></th>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+					<td>0</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>b4</td>
+					<td>b3</td>
+					<td>b2</td>
+					<td>b1</td>
+					<th>列/行</th>
+					<th>0</th>
+					<th>1</th>
+					<th>2</th>
+					<th>3</th>
+					<th>4</th>
+					<th>5</th>
+					<th>6</th>
+					<th>7</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<th>0</th>
+					<td>NUL</td>
+					<td>TCP</td>
+					<td>SP</td>
+					<td>0</td>
+					<td>@</td>
+					<td>P</td>
+					<td>'</td>
+					<td>p</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<th>1</th>
+					<td>TC1</td>
+					<td>DC1</td>
+					<td>!</td>
+					<td>1</td>
+					<td>A</td>
+					<td>Q</td>
+					<td>a</td>
+					<td>q</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>1</td>
+					<th>2</th>
+					<td>TC2</td>
+					<td>DC2</td>
+					<td>"</td>
+					<td>2</td>
+					<td>B</td>
+					<td>R</td>
+					<td>b</td>
+					<td>r</td>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<td>0</td>
+					<th>3</th>
+					<td>TC3</td>
+					<td>DC3</td>
+					<td>#</td>
+					<td>3</td>
+					<td>C</td>
+					<td>S</td>
+					<td>c</td>
+					<td>s</td>
+				</tr>
+			</table>
+
+			
+		<h2>【木構造】</h2>
+			<p>パソコンのディレクトリのような概念。</p>
+			<h3>・完全2分木</h3>
+				<p>根から葉まで深さが全て等しい2分木。ただし、深さ1の差は無視される。</p>
+				<p>　　　根　　</p>
+				<p>　節　　　節</p>
+				<p>葉　葉　葉　葉</p>
+
+			<h3>・2分探索木</h3>
+				<p>各節において「左の子＜親＜右の子」という関係を持つ。</p>
+				<p>　　　17　　</p>
+				<p>　15　　　19</p>
+				<p>14　16　18　20</p>
+		<h2>RASIS</h2>
+		<dl>
+			<dt>信頼性(Reliability)</dt>
+			<dd>システムが正常に稼働していること。指標としてMTBF(5-06節参照)が用いられる。</dd>
+			<dt>可用性(Availability)</dt>
+			<dd>必要に応じて、いつでもシステムが使用できる状態であること。指標として稼働率(5-06節参照)が用いられる。</dd>
+			<dt>保守性(Serviceability)</dt>
+			<dd>システムの故障個所の早期発見、早期修復ができること。指標としてMTTR(5-06節参照)が用いられる。</dd>
+			<dt>保全性(Integrity)</dt>
+			<dd>誤作動がなく、システムが壊れにくいこと。</dd>
+			<dt>安全性(Security)</dt>
+			<dd>不正アクセスによって、システムが破壊されたり、データを盗まれたりしないように保護すること。機密性ともいう。</dd>
+		</dl>	
+			
+		<h1>九鬼さんより</h1>
+		<h1>配列とかアルゴリズム系は、プログラミングと直接からむから出してきそうですね</h1>
+		<p>という情報を頂きました。</p>
+
+	</container>
+</body>
+</html>
