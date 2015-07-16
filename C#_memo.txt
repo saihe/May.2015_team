@@ -134,6 +134,23 @@ namespace C#memo
 			}catch{
 				空文字が入力されるとここに来るので再度入力を促す文字を表示する。
 			}
+		
+		//誕生日から年齢を導く
+			            if (agem < 0)
+            {
+                return (age - 1);
+            } else if (agem == 0 && aged < 0)
+            {
+                return (age - 1);
+            } else if (agem == 0 && aged == 0)
+            {
+                return age;
+            }
+            else { 
+                return age;
+            }
+
+		
 		/*--------------------------メモ・終--------------------------*/
 
 		}
