@@ -172,8 +172,9 @@ namespace C#memo
 			m  = "あ";
 			m += "い";//変数mには"あい"が入っている
 
-		//foreachはitemに配列の要素が代入される
-			foreach(var item in 配列名){}
+		//foreachは変数に配列の要素が代入される
+			foreach(var value in 配列名.Values){}
+			foreach(var key in 配列名.Keys){}
 
 		//コンソールに書き出す(改行無し有り)
 			Console.Write();
@@ -193,7 +194,7 @@ namespace C#memo
 				continue;
 			}
 			
-		//例外処理try{}catch{}
+		//例外処理try{}catch{}(finally{})
 			try{
 				ReadLineとかの処理
 			}catch{
