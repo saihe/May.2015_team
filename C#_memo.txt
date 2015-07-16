@@ -62,7 +62,7 @@ namespace C#memo
 				}
 			//Dictionary
 				Dictionary<keyの型 , valueの型> 配列名 = new Dictinary<keyの型 , valueの型>();
-				dic["key"] = value;
+				配列名["key"] = value;
 				
 		//Dictionaryのキー・要素のペア数取得
 			dictionary名.Count;
