@@ -3,7 +3,7 @@ namespace C#memo
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		static void Main (string[] args)
 		{
 		
 		/*--------------------------変数、配列・始--------------------------*/
@@ -91,13 +91,78 @@ namespace C#memo
 			配列名.GetLength(次元数);
 
 
-		
-		
-		
-		
-
 
 		/*--------------------------変数、配列・終--------------------------*/
+		
+		/*--------------------------クラス、オブジェクト指向・始--------------------------*/
+
+		【フィールド・メソッドを予め用意しておきそれを汎用する】
+		・フィールド：使用するデータを予め定義しておく
+		・メソッド  ：フィールドを用いた関数を予め定義する
+		
+		//クラス作成と継承
+			class Program
+			{	
+				//並列して書く
+				static void Main (string[] args){}
+				class Person{}
+				class Student : Person{}
+			}
+		
+		//class Personの中身
+			class Person
+			{
+			//フィールド
+				public string   lastname;
+				public string   firstname;
+				public string   furisei;
+				public string   furimei;
+				public DateTime bd;
+				public DateTime publishedDate;
+			//メソッド
+				public int getAge()
+				{
+				}
+			}
+		
+		//インスタンスしてフィールドに値を代入する
+			static void Main (string[] args)
+			{
+				Person person = new Person();
+				クラス 変数??       クラス
+				
+				person.lastname      = "田中";
+				クラス.フィールド    =  値
+				person.firstname     = "太郎";
+				person.furisei       = "たなか";
+				person.furimei       = "たろう";
+				person.bd            = new DateTime(2000 , 1 , 1);
+				person.publishedDate = DateTime.Now;
+			}
+			
+		//クラスの継承class Personを引き継いでいる
+			class Student : Person
+			{
+				public string id;
+				public int grade;
+				public Dictionary<string , int> scores;
+				
+				public int getTotalScore()
+				{
+					int totalScore = 0;
+					foreach(var score in sores.values)
+					{
+						totalScore += score;
+					}
+					return totalScore;
+				}
+			}
+
+
+
+
+
+		/*--------------------------クラス、オブジェクト指向・終--------------------------*/
 
 		/*--------------------------メモ・始--------------------------*/
 		//文字連結(+をつかう)
