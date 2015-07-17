@@ -90,6 +90,9 @@ namespace C#memo
 		//多次元配列の次元ごとの要素数
 			配列名.GetLength(次元数);
 
+		//可変長の配列、配列名.Addで配列を追加していく
+			List<型> 配列名 = new List<型>();
+			配列名.Add();
 
 
 		/*--------------------------変数、配列・終--------------------------*/
@@ -158,6 +161,9 @@ namespace C#memo
 				}
 			}
 
+		//Random()メソッド
+			System.Random 変数名 = new Rnadom();
+			int 変数名 = 変数名.Next(minValue , maxValue);
 
 
 
@@ -182,7 +188,10 @@ namespace C#memo
 			
 		//コンソールから入力する(返り値はstring型)
 			Console.Read();
-			COnsole.ReadLine();
+			Console.ReadLine();
+			Console.ReadKey();//入力されたキーを取得しコンソールに表示する
+			//空でエンターが押されたときは "" が入る
+			
 			
 		//例外処理(空とマイナスだと何回も入力させる)
 			string s = "";
