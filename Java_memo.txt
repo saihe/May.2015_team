@@ -5,7 +5,11 @@ namespace Javamemo
 	{
 		static void Main (string[] args)
 		{
-		
+		/*--------------------------SQL・始--------------------------*/
+		//パッケージ java.sql
+			https://docs.oracle.com/javase/jp/6/api/java/sql/package-summary.html
+
+		/*--------------------------SQL・終--------------------------*/
 		/*--------------------------変数、配列・始--------------------------*/
 
 
