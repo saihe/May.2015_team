@@ -1,0 +1,117 @@
+using UnityEngine;
+using System.Collections;
+
+public class CameraControl : MonoBehaviour {
+
+	//開始時に実行？
+		void Start () {}
+	
+	//毎フレームごとに実行
+		void Update () {}
+	
+	//マウスの左クリック時位置情報を取得、スクリプト適応オブジェクトに反映
+        if (Input.GetMouseButton(0))
+        {
+            Camera.main.transform.Translate(Input.GetAxisRaw("Mouse X") / 10, Input.GetAxisRaw("Mouse Y") / 10, 0);
+        }
+        
+	//マウスの右クリック時位置情報を取得、スクリプト適応オブジェクトに反映
+        if (Input.GetMouseButton(1))
+        {
+            Camera.main.transform.Rotate(Input.GetAxisRaw("Mouse Y") * 7, Input.GetAxisRaw("Mouse X") * 7, 0);
+        }
+        
+    //スペースキー(Jump)でジャンプする
+        if (Input.GetButtonDown("Jump"))
+        {
+            GetComponent<Rigidbody>().velocity = new Vector3(0, jumpPower, 0);
+        }
+        
+    //接触判定があったらゲームリスタート
+		void OnCollisionEnter(Collision other)
+		{
+		    Application.LoadLevel(Application.loadedLevel);
+		}
+		
+	//指定した秒後オブジェクトを削除
+		void Start () {
+	        Destroy(gameObject, 10f);
+		}
+		
+	//Y軸ランダムで指定した秒毎にオブジェクト生成
+		IEnumerator Start () {
+	        while (true)
+	        {
+	            transform.position = new Vector3(transform.position.x, Random.Range(-renge, renge), transform.position.z);
+	            Instantiate(wallPrefab, transform.position, transform.rotation);
+	            yield return new WaitForSeconds(interval);
+	        }
+		}
+		
+	//オブジェクトを十字キーなどで動かす(上下固定)
+		public float moveSpeed = 5f;
+		public float rotationSpeed = 360f;
+
+		CharacterController characterController;
+		Animator animator;
+
+		// Use this for initialization
+		void Start () {
+		characterController = GetComponent<CharacterController>();
+		animator = GetComponentInChildren<Animator>();
+		}
+
+		// Update is called once per frame
+		void Update () {
+			Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			if(direction.sqrMagnitude > 0.01f)
+			{
+			    Vector3 forward = Vector3.Slerp(
+			        transform.forward,
+			        direction,
+			        rotationSpeed * Time.deltaTime / Vector3.Angle(transform.forward, direction)
+			        );
+			    transform.LookAt(transform.position + forward);
+			}
+
+			characterController.Move(direction * moveSpeed * Time.deltaTime);
+
+
+			animator.SetFloat("Speed", characterController.velocity.magnitude);
+
+			if (GameObject.FindGameObjectsWithTag("Dot").Length == 0)
+			{
+			    Application.LoadLevel("Win");
+			}
+		}
+		
+	//オブジェクトに触れるとオブジェクトが消える
+		void OnTriggerEnter(Collider other)
+		{
+			if(other.tag == "Dot")
+			{
+				Destroy(other.gameObject);
+			}
+			if(other.tag == "Enemy")
+			{
+				Application.LoadLevel("Lose");
+			}
+		}
+	
+	//シーンを切り替える(スクリプト実装後Inspectorビューで切り替え先を変更可能)
+		public string nextSceneName;
+
+		// Use this for initialization
+		void Start () {
+		
+		}
+		
+		// Update is called once per frame
+		void Update () {
+	        if (Input.GetButtonDown("Submit"))
+	        {
+	            Application.LoadLevel(nextSceneName);
+	        }
+		}
+		
+}
