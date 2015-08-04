@@ -9,7 +9,7 @@
 branch=$(git rev-parse --symbolic --abbrev-ref $1)
 
 # 送信先アドレス
-mailaddr="saihe@gmail.com"
+mailaddr="saihe.kyon@gmail.com"
 # 件名
 subject="Gitリポジトリ アップデート通知 (${branch} branch)"
 # 本文(最新5コミット)
