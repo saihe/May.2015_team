@@ -156,6 +156,13 @@ public class CameraControl : MonoBehaviour {
 		
 		//オイラー角で入れる
 		transform.rotation	= Quaternion.Euler( 0, m_rotationY, 0);//Y軸回転でキャラの向きを横に動かせます
-	}
+		}
+	
+	//エフェクトをInstantiateする
+		Instantiate(出現させるプレファブ,出現させる場所,出現させる角度);
+		
+	//オーディオ再生が終わってからオブジェクトを消す
+		オーディオ名.Play();
+		Destroy(オブジェクト名 , オーディオの長さ);
 		
 }
