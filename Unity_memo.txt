@@ -1,0 +1,168 @@
+using UnityEngine;
+using System.Collections;
+
+public class CameraControl : MonoBehaviour {
+
+	//開始時に実行？
+		void Start () {}
+	
+	//毎フレームごとに実行
+		void Update () {}
+	
+	//マウスの左クリック時位置情報を取得、スクリプト適応オブジェクトに反映
+        if (Input.GetMouseButton(0))
+        {
+            Camera.main.transform.Translate(Input.GetAxisRaw("Mouse X") / 10, Input.GetAxisRaw("Mouse Y") / 10, 0);
+        }
+        
+	//マウスの右クリック時位置情報を取得、スクリプト適応オブジェクトに反映
+        if (Input.GetMouseButton(1))
+        {
+            Camera.main.transform.Rotate(Input.GetAxisRaw("Mouse Y") * 7, Input.GetAxisRaw("Mouse X") * 7, 0);
+        }
+        
+    //スペースキー(Jump)でジャンプする
+        if (Input.GetButtonDown("Jump"))
+        {
+            GetComponent<Rigidbody>().velocity = new Vector3(0, jumpPower, 0);
+        }
+        
+    //接触判定があったらゲームリスタート
+		void OnCollisionEnter(Collision other)
+		{
+		    Application.LoadLevel(Application.loadedLevel);
+		}
+		
+	//指定した秒後オブジェクトを削除
+		void Start () {
+	        Destroy(gameObject, 10f);
+		}
+		
+	//Y軸ランダムで指定した秒毎にオブジェクト生成
+		IEnumerator Start () {
+	        while (true)
+	        {
+	            transform.position = new Vector3(transform.position.x, Random.Range(-renge, renge), transform.position.z);
+	            Instantiate(wallPrefab, transform.position, transform.rotation);
+	            yield return new WaitForSeconds(interval);
+	        }
+		}
+		
+	//オブジェクトを十字キーなどで動かす(上下固定)
+		public float moveSpeed = 5f;
+		public float rotationSpeed = 360f;
+
+		CharacterController characterController;
+		Animator animator;
+
+		// Use this for initialization
+		void Start () {
+		characterController = GetComponent<CharacterController>();
+		animator = GetComponentInChildren<Animator>();
+		}
+
+		// Update is called once per frame
+		void Update () {
+			Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			if(direction.sqrMagnitude > 0.01f)
+			{
+			    Vector3 forward = Vector3.Slerp(
+			        transform.forward,
+			        direction,
+			        rotationSpeed * Time.deltaTime / Vector3.Angle(transform.forward, direction)
+			        );
+			    transform.LookAt(transform.position + forward);
+			}
+
+			characterController.Move(direction * moveSpeed * Time.deltaTime);
+
+
+			animator.SetFloat("Speed", characterController.velocity.magnitude);
+
+			if (GameObject.FindGameObjectsWithTag("Dot").Length == 0)
+			{
+			    Application.LoadLevel("Win");
+			}
+		}
+		
+	//オブジェクトに触れるとオブジェクトが消える
+		void OnTriggerEnter(Collider other)
+		{
+			if(other.tag == "Dot")
+			{
+				Destroy(other.gameObject);
+			}
+			if(other.tag == "Enemy")
+			{
+				Application.LoadLevel("Lose");
+			}
+		}
+	
+	//シーンを切り替える(スクリプト実装後Inspectorビューで切り替え先を変更可能)
+		public string nextSceneName;
+
+		// Use this for initialization
+		void Start () {
+		
+		}
+		
+		// Update is called once per frame
+		void Update () {
+	        if (Input.GetButtonDown("Submit"))
+	        {
+	            Application.LoadLevel(nextSceneName);
+	        }
+		}
+		
+	//キー操作から移動
+		Vector3 addPosition = Vector3.zero;
+		Vector3 vecInput = new Vector3( 0f, 0, Input.GetAxisRaw( "Vertical"));
+		if( vecInput.z > 0) {
+			//前進
+			addPosition.z		= MOVE_Z_FRONT;
+		} else
+		if( vecInput.z < 0) {
+			//後退
+			addPosition.z		= MOVE_Z_BACK;
+		}
+		
+		//移動量を Transform に渡して移動させる
+		transform.position	+= ((transform.rotation * addPosition) * Time.deltaTime);
+		/*
+			Vector3 に transform.rotation をかけると、その方向へ曲げてくれます
+			この時、Vector3 は Z+ の方向を正面として考えます
+		 */
+		 
+	//回転
+		{
+		//このフレームで動く回転量
+	    float addRotationY = 0.0f;
+		//キー操作による回転
+		if( Input.GetKey( KeyCode.Q)) {
+			addRotationY		= -ROTATION_Y_KEY;
+		} else
+		if( Input.GetKey( KeyCode.E)) {
+			addRotationY		=  ROTATION_Y_KEY;
+		}
+		
+		//マウスの移動量による回転
+		if( m_mouseLockFlag) {
+			//移動量を取得して角度に渡す
+			addRotationY		+= (Input.GetAxis( "Mouse X")	*ROTATION_Y_MOUSE / 2);
+		}
+		
+		//現在の角度に加算
+		m_rotationY			+= (addRotationY	*Time.deltaTime);//移動量、回転量には Time.deltaTime をかけて実行環境(フレーム数の差)による違いが出ないようにします
+		
+		//オイラー角で入れる
+		transform.rotation	= Quaternion.Euler( 0, m_rotationY, 0);//Y軸回転でキャラの向きを横に動かせます
+		}
+	
+	//エフェクトをInstantiateする
+		Instantiate(出現させるプレファブ,出現させる場所,出現させる角度);
+		
+	//オーディオ再生が終わってからオブジェクトを消す
+		オーディオ名.Play();
+		Destroy(オブジェクト名 , オーディオの長さ);
+		
+}
