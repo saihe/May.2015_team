@@ -1,0 +1,35 @@
+1.xampp導入
+
+2.データベース作成
+
+3.cakePHPダウンロード
+
+4.xampp/htdocsの中にダウンロードしたcakePHPzipファイルを解凍
+
+5.C:\xampp\htdocs\sales_cake\app\Config\core.phpの中にある "Security.salt" および "Security.cipherSeed" の値を任意の数列に変更
+
+6.コントロールパネル\システムにあるシステム環境変数の path に C:\xampp\php を追記
+
+7.xamppにてApachおよびMySQLを起動
+
+8.コンソールを起動し解凍したcakePHPのフォルダ（以下sales_cake）\app\Consoleに移動し set path = %path%;%cd% と入力（環境変数pathに追加）
+
+9.cake bake でデータベース情報を設定する
+	Name:default
+	Datasource:MySQL
+	Persitent:No
+	Database Host:localhost
+	Port:そのまま[Enter]（設定を変更していれば設定したポート番号）
+	User:root(変更していればその名前)
+	Password:そのまま[Enter]（設定していれば設定したパスワード）
+	Database Name:作成したデータベース名
+	Table Prefix:No
+	Table encoding:utf8
+
+10.C:\xampp\htdocs\sales_cake\app\Config\database.phpをテキストエディタで開き上記設定内容になっているか確認しなっていなければ変更
+
+11.DebugKit導入（別テキストファイルで導入手順記述）
+
+12.sales_cake\appに戻り Console\cake bake でcakePHP起動
+
+
