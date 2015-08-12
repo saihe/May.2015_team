@@ -1,0 +1,26 @@
+http://qiita.com/BUN/items/403cccad9eaa831e6fd8
+
+手順.1
+
+リポジトリからソースをDL
+https://github.com/cakephp/debug_kit
+ブランチからcakePHP2.7とかその辺をZIPでゲットする
+手順.2
+
+解凍後、DebugKit にリネームして /plugins/ へコピー
+手順.3
+
+/app/Config/bootstrap.php に、プラグインのロードの記述を追加
+CakePlugin::load('DebugKit');
+手順.4
+
+/app/Controller/AppController.php 内で、コンポーネントの読込
+class AppController extends Controller {
+    public $components = array('DebugKit.Toolbar'); // この行を追加
+}
+手順.5
+
+/app/View/Layouts/default.php に記述された sql_dump エレメントの出力を削除
+<?php echo $this->element('sql_dump'); ?>
+手順.6
+
