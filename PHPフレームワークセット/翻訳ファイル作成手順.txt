@@ -1,0 +1,136 @@
+http://hijiriworld.com/web/cakephp-locale/
+
+cd c:?xampp?htdocs?sample?app\cake i18n
+
+8. POTファイルの作成
+
+POTファイルが翻訳ファイルの素です。
+
+[E]xtract POT file from sources を実行しますので、「e」を入力してEnter。
+
+Exsample: C:?xampp?htdocs?sample?myapp
+[Q]uite [D]one
+[C:?xampp?htdocs?sample?app] >
+
+ 「パスは？」
+
+「app」フォルダが指定されているはずですので、そのままEnter。
+
+Exsample: C:?xampp?htdocs?sample?myapp
+[Q]uite [D]one
+[D] >
+
+「本当に？」
+
+そのままEnter。[D]
+
+What is the full path you would like to output?
+Exsample: C:?xampp?htdocs?sample?app?locale
+[Q]uite
+[C:?xampp?htdocs?sample?app?locale] >
+
+「POTファイルの出力先は？」
+
+「locale」フォルダが指定されているはずですので、そのままEnter。
+
+Would you like to merge all domains strings into the default.pot file? (y/n)
+[y] >
+
+「翻訳ファイルをマージしちゃっていいかな～？」
+
+「y」を入力してEnter。
+
+Extracting…
+
+「抽出中… 抽出中…」
+
+だーっと「__(‘テキスト’)」の形式で記述された静的テキストの抽出がはじまります。
+終わったら i18nのメインメニューに戻ります。
+
+これで app/locale フォルダ内に、「default.pot」という翻訳ファイルの素が作成されました。
+
+中身を見てみましょう。
+
+> app/local/default.pot
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2012-02-24 17:38+0900\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+ 
+#: \views\groups\index.ctp:25
+#: \views\users\index.ctp:31
+msgid "View"
+msgstr ""
+ 
+#: \views\groups\index.ctp:26
+#: \views\users\index.ctp:32
+msgid "Edit"
+msgstr ""
+ 
+#: \views\groups\edit.ctp:16
+#: \views\groups\index.ctp:27
+#: \views\users\edit.ctp:18
+#: \views\users\index.ctp:33
+msgid "Delete"
+msgstr ""
+ 
+// 省略
+翻訳データは以下の部分です。
+
+1
+2
+msgid "View"
+msgstr ""
+msgid ? __()で記述したテキスト
+msgstr ? 翻訳テキスト
+
+このファイルをもとに、各言語の翻訳ファイルを作成していくことになります。
+
+最後に作成した default.poのエンコードをUTF-8に変える。
+そうすると他の作成したMVCに関するファイルがSJISになっていても文字化けしなくなる。
