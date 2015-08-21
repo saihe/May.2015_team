@@ -1,0 +1,78 @@
+cakePHP
+
+//view
+	//ページリンク
+		 <?php echo $this->Html->link(__('表示文字') , array('controller' => 'リンク先コントローラー名(customersとか)' , 'action' => 'リンクページ名(indexとか)' , リンク先に渡す引数($customer['Customer']['id']とか))); ?>
+		 
+	//セレクトボックス
+		<?php echo $this->Form->create('Customer'); ?>
+		<?php
+			echo $this->Form->input(__('名前'), array(
+					'type' => 'select', 
+					'options' => プルダウンに入れる配列名,
+				));
+			echo $this->Form->end(__('Submit'));
+		?>
+	//foreach
+		<?php foreach ($customers as $customer): ?>
+			ループさせる処理
+			echo h($customer['Customer']['customer_name']);とか
+<?php endforeach; ?>
+
+
+//controller
+	//viewと関連するコントローラーの関数
+		public function index() {
+		indexページと関連する関数
+		return ;
+	}
+	
+	//viewに変数を渡す
+	$this->set('変数名', 変数に入れる値とか);
+
+	//テーブル(bake済み)の中から値を探しローカル変数に入れる
+		$変数名 = $this->テーブル名->find('all');
+									('list')
+									('first')
+
+	//検索条件の指定
+		$options = array('conditions' => array('検索テーブル名.' . $this->検索テーブル名->primaryKey => $id));
+		$this->set('変数名', $this->検索テーブル名->find('first', $options));
+		array('検索テーブル名.' . $this->検索テーブル名->primaryKey => $id))
+		は主キーを指定しているが主キーでないカラムを検索条件にする場合は
+		array ('テーブル名.カラム名' => $id)
+		とする
+
+
+	//検索条件の指定
+		public function view($id = null) {
+			if (!$this->Customer->exists($id)) {
+				throw new NotFoundException(__('Invalid customer'));
+			}
+			$options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $id));
+			$this->set('customer', $this->Customer->find('first', $options));
+		}
+
+	//Formで送信されたPostデータがあるかどうか確認
+		if(isset$this->data['フォーム名']){
+			echo "POSTあり";
+		}else{
+			echo "POSTなし";
+		}
+
+	//レコードの数をカウントし所属モデルのカラムに数を渡す
+		class モデル名 extends AppModel {
+			public $belongsTo = array(
+				'所属モデル名' => array(
+					'className' => '所属モデル名',
+					'foreignKey' => '繋がっているキー',
+					'conditions' => '',
+					'fields' => '',
+					'order' => '',
+					'counterCache' => true,//カウントする
+					'counterScope' => array('検索対象' => 検索条件)
+				),
+			);
+		}
+
+
