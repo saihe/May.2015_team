@@ -74,5 +74,16 @@ cakePHP
 				),
 			);
 		}
-
+	
+	//リレーションシップ
+		hasOne			1対1テーブルに追加する時に使う
+		hasMany			1対多
+		belongsTo		多対1
+		hasAndBelongsTo	多対多
+	
+	//中間テーブル
+		カレー		玉ねぎ
+					肉
+				
+		ハンバーグ	肉
 
