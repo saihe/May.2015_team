@@ -1,0 +1,38 @@
+JDK最新版のインストール
+AndroidStudioの最新版をインストール
+
+[Android Studioの設定]
+システム環境変数に
+変数：JAVA_HOME
+値　：jdkの場所（C:Program Files\Java\jdk1.8.0_25）とか
+
+変数：Path
+値　：SDKの場所(C:\Android\sdk\platform-tools;)とか先頭に追加
+
+
+[エミュレータの設定]
+コマンドプロンプト(管理者)で
+regedit[Enter]
+レジストリエディタが起動する
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Android SDK Tools
+右のウィンドウにPathというのが出てくるからダブルクリックで開き
+値をSDKの場所に変える(C:\Android\sdk)とか
+
+プロジェクトはAPI 15 で94%カバーできるからこれでいい
+Android2.xは捨てる
+
+app/main/res/layout/activity_main.xmlが本体
+app/main/java/ドメイン名逆さ表示/MainActivity.javaがJAVA本体
+
+//idを拾ってきてButtonとして認識する
+buttonPushMe = (Button) findViewById(R.id.btn_pushme);
+
+R = リソース
+
+//画像ファイルをプロジェクトに追加
+res/drawable-xxhdpiというディレクトリを作成しドラッグドロップ
+呼ぶときは
+R.drawable.名前(拡張子はいらない)
+
+match_parent = 画面いっぱいにマッチするように
