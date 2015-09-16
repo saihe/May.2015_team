@@ -43,3 +43,29 @@ Toast = 画面に少しでて、すぐ消える
 →別スレッドで通信する
 
 UI表示変更などはメインスレッドからやらないとダメ
+
+
+//String... params
+ドット3つで可変長引数
+
+//HttpConectionによるHTTP接続およびJSONデータ取得(リクエスト・レスポンス)
+private static final String URL = "http://weather.livedoor.com/forecast/webservice/json/v1?city=";
+
+    public static String getWeather(String pointId) throws IOException {
+        // リクエスト送信
+        URL requestUrl = new URL(URL + pointId);
+        HttpURLConnection connection;
+        connection = (HttpURLConnection) requestUrl.openConnection();
+        InputStream input = connection.getInputStream();
+
+        // 結果取得
+        BufferedReader reader = new BufferedReader(new InputStreamReader(
+                input, "UTF-8"));
+        String line = reader.readLine();
+        StringBuilder tmpResult = new StringBuilder(line);
+
+        reader.close();
+        //return line;これでもOKっぽい
+        return tmpResult.toString();
+
+    }
