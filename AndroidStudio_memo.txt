@@ -100,7 +100,18 @@ app/main/java/ドメイン名逆さ表示/MainActivity.javaがJAVA本体
 	dp = ユーザーのフォントサイズでは変わらない
 	px = ピクセル
 
+//入力文字取得
+	protected void onCreate(Bundle savedInstanceState) {
+		final EditText ev = new EditText(this);
+		pushSubmit.setOnClickListener(new View.OnClickListener() {
+           	@Override
+           		public void onClick(View v) {
+                		//String型の変数に入力された文字を代入する
+                		String str = ev.getText().toString();
+			}
+		});
+	}
 
 
-
+		
 
