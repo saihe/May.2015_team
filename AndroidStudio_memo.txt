@@ -112,6 +112,16 @@ app/main/java/ドメイン名逆さ表示/MainActivity.javaがJAVA本体
 		});
 	}
 
+//ネットワーク通信を行うために
+	res/AndroidManifest.xmlの中で
+	<manifest>
+		.
+		..
+		...
+		<uses-permission android:name="android.permission.INTERNET"/>
+	</manifest>
+と記述することでpermission diniedがなくなる
+
 
 		
 
