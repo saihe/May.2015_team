@@ -127,7 +127,7 @@ app/main/java/ドメイン名逆さ表示/MainActivity.javaがJAVA本体
 	create table user(id integer, name text, old integer, address text);
 	create table テーブル名(追加するカラム データ型, 追加するカラム データ型);
 	create table user(id integer primary key autoincrement, address text not null);もできる
-	カラムが , 区切りってことか
+	カラムが「 , 」(カンマ)区切りってことか
 	
 	//データベース定義
 	SQLiteDatabase db;
@@ -136,5 +136,25 @@ app/main/java/ドメイン名逆さ表示/MainActivity.javaがJAVA本体
 	//データベース.execSQL(SQL文);で実行
 	db.execSQL(CREATE_TABLE);
 
+//insertする
+    public long insert(String value) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DATA, value);
+        return db.insert(TABLE_NAME, null, values);
+    }
+
+//updateする
+    public int update(MyDBEntity entity) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DATA, entity.getValue());
+        String whereClause = COLUMN_ID + "=" + entity.getRowId();
+        return db.update(TABLE_NAME, values, whereClause, null);
+    }
+
+//deleteする
+    public int delete(int rowId) {
+        String whereClause = COLUMN_ID + "=" + rowId;
+        return db.delete(TABLE_NAME, whereClause, null);
+    }
 		
 
