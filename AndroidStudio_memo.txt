@@ -122,6 +122,19 @@ app/main/java/ドメイン名逆さ表示/MainActivity.javaがJAVA本体
 	</manifest>
 と記述することでpermission diniedがなくなる
 
+//SQLiteを利用する
+//テーブルを作成する
+	create table user(id integer, name text, old integer, address text);
+	create table テーブル名(追加するカラム データ型, 追加するカラム データ型);
+	create table user(id integer primary key autoincrement, address text not null);もできる
+	カラムが , 区切りってことか
+	
+	//データベース定義
+	SQLiteDatabase db;
+	//SQL文を String 型に格納
+	String CREATE_TABLE = create table user(id integer, name text, old integer, address text);
+	//データベース.execSQL(SQL文);で実行
+	db.execSQL(CREATE_TABLE);
 
 		
 
