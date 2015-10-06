@@ -184,7 +184,8 @@ public class CameraControl : MonoBehaviour {
 //normalized
 	斜め移動するときに縦横 1 の移動量だった場合、本来斜めには約 1.4 進むはずだが、normalizedすることでななめの移動量を 1 にしてくれる。
 
-
+//Mathf.Clamp
+	上限値と下限値を指定する。超えるとそれぞれ設定された値に修正される。
 
 
 
