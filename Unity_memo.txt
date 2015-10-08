@@ -187,5 +187,6 @@ public class CameraControl : MonoBehaviour {
 //Mathf.Clamp
 	上限値と下限値を指定する。超えるとそれぞれ設定された値に修正される。
 
-
+//シングルトンとは
+	プロジェクト内で一つしか存在し得ない
 
